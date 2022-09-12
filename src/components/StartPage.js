@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Offcanvas, Button } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 function StartPage(){
 
@@ -21,7 +22,7 @@ function StartPage(){
                 have chosen. Like, text, images, lists, etc.
                 </Offcanvas.Body>
             </Offcanvas>
-            <Button style={{border:"2px solid #524b37", backgroundColor:"transparent", margin:'1%', boxShadow:"0px 0px 17px 0px rgba(0,0,0,0.75)", color:"black"}}> Start Game</Button>
+            <Button style={{border:"2px solid #524b37", backgroundColor:"transparent", margin:'1%', boxShadow:"0px 0px 17px 0px rgba(0,0,0,0.75)", color:"black"}}><Link className='nav-link' to='/play'>Start Game</Link></Button>
         </div>
     )
 }
