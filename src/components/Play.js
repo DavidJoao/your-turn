@@ -7,10 +7,9 @@ function Play(){
     const { colorTemplate } = useContext(Context)
     const [ player, setPlayer ] = useState('')
     const [ playersList, setPlayersList ] = useState([])
-    const playersArray = []
+    const [ chosen, setChosen ] = useState('')
 
     const handleChange = (e) => {
-        console.log(e.target.value)
         setPlayer(e.target.value)
     }
     
@@ -20,12 +19,16 @@ function Play(){
             id: Math.floor(Math.random() * 1000),
             value: player,
         }
-
-    setPlayersList(oldList => [...oldList, playerItem])
-    setPlayer('')
-    console.log(playerItem)
+    
+        
+        setPlayersList(oldList => [...oldList, playerItem])
+        setPlayer('')
     }
 
+    const handlePlayer = () => {
+        setChosen(playersList[Math.floor(Math.random() * playersList.length)].value)
+    } 
+    
     return(
         <div style={{width:"100%", height:'100vh', backgroundColor:`${colorTemplate.primary}`, display:"flex", justifyContent:"center", alignItems:"center"}}>
             <div style={{border:`5px solid ${colorTemplate.secondary}`, width:'90%', height:"90vh", borderRadius:'10px', display:'flex', flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
@@ -43,6 +46,8 @@ function Play(){
                         })}
                     </ul>
                 </div>
+                <Button onClick={handlePlayer} style={{marginTop:'4%', width:'15rem', height:"6rem", backgroundImage:"url('https://thumbs.dreamstime.com/b/beer-textured-background-close-up-view-glass-beer-droplets-as-textured-background-118794463.jpg')", backgroundSize:'cover', fontSize:"3.5rem", border:`3px solid ${colorTemplate.secondary}`}}>Drink!</Button>
+                <h1 style={{marginTop:'4%', border:'3px solid red', borderRadius:'10px', padding:"3%"}}>{chosen}</h1>
             </div>
         </div>
     )
