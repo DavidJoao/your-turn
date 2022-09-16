@@ -26,12 +26,17 @@ function Play(){
     }
 
     const handlePlayer = () => {
-        setChosen(playersList[Math.floor(Math.random() * playersList.length)].value)
+        try {
+            setChosen(playersList[Math.floor(Math.random() * playersList.length)].value)
+        }
+        catch (err) {
+            alert('There is no players. Please, enter players and try again')
+        }
     } 
     
     return(
         <div style={{width:"100%", height:'100vh', backgroundColor:`${colorTemplate.primary}`, display:"flex", justifyContent:"center", alignItems:"center"}}>
-            <div style={{border:`5px solid ${colorTemplate.secondary}`, width:'90%', height:"90vh", borderRadius:'10px', display:'flex', flexDirection:"column", justifyContent:"center", alignItems:"center"}}>
+            <div style={{border:`5px solid ${colorTemplate.secondary}`, width:'90%', height:"90vh", borderRadius:'10px', display:'flex', flexDirection:"column", justifyContent:"center", alignItems:"center", boxShadow:"0px 5px 19px 0px rgba(0,0,0,0.75)"}}>
                 <h3>Enter Players:</h3>
                 <InputGroup style={{width:'90%'}}>
                     <Form.Control onChange={handleChange} placeholder="Player's name" value={player}/>
@@ -47,7 +52,7 @@ function Play(){
                     </ul>
                 </div>
                 <Button onClick={handlePlayer} style={{marginTop:'4%', width:'15rem', height:"6rem", backgroundImage:"url('https://thumbs.dreamstime.com/b/beer-textured-background-close-up-view-glass-beer-droplets-as-textured-background-118794463.jpg')", backgroundSize:'cover', fontSize:"3.5rem", border:`3px solid ${colorTemplate.secondary}`}}>Drink!</Button>
-                <h1 style={{marginTop:'4%', border:'3px solid red', borderRadius:'10px', padding:"3%"}}>{chosen}</h1>
+                <h1 style={{marginTop:'4%', border:'3px solid black', borderRadius:'100%', padding:"3%", backgroundColor:"red", color:'white', boxShadow:"0px 5px 19px 0px rgba(0,0,0,0.75)"}}>{chosen}</h1>
             </div>
         </div>
     )
